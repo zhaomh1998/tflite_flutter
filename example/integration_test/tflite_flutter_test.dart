@@ -48,6 +48,13 @@ void main() {
     interpreter.close();
   });
 
+  test('interpreter from asset (fromAssets=false)', () async {
+    final interpreter = await tfl.Interpreter.fromAsset(
+        'assets/test/$dataFileName',
+        fromAssets: false);
+    interpreter.close();
+  });
+
   test('interpreter from address', () async {
     final interpreter = await tfl.Interpreter.fromAsset('test/$dataFileName');
     final interpreter2 = tfl.Interpreter.fromAddress(interpreter.address);
