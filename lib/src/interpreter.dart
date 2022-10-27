@@ -99,7 +99,9 @@ class Interpreter {
   /// Creates interpreter from a [assetName]
   ///
   /// Place your `.tflite` file in the assets folder. Do not include the "assets/"
-  /// directory in assetName.
+  /// directory in assetName if fromAsset is not specified.
+  ///
+  /// If your `.tflite` file located elsewhere (e.g other packages), set fromAssets to `false`.
   ///
   /// Example:
   ///
@@ -107,16 +109,16 @@ class Interpreter {
   /// final interpreter = await tfl.Interpreter.fromAsset('your_model.tflite');
   /// ```
   static Future<Interpreter> fromAsset(String assetName,
-      {InterpreterOptions? options}) async {
-    Uint8List buffer = await _getBuffer(assetName);
+      {InterpreterOptions? options, bool fromAssets = true}) async {
+    Uint8List buffer = await _getBuffer(assetName, fromAssets: fromAssets);
     return Interpreter.fromBuffer(buffer, options: options);
   }
 
   /// Get byte buffer
   static Future<Uint8List> _getBuffer(String assetFileName,
-      {bool fromAsset = true}) async {
+      {bool fromAssets = true}) async {
     ByteData rawAssetFile =
-        await rootBundle.load('${fromAsset ? "assets/" : ""}$assetFileName');
+        await rootBundle.load('${fromAssets ? "assets/" : ""}$assetFileName');
     final rawBytes = rawAssetFile.buffer.asUint8List();
     return rawBytes;
   }
