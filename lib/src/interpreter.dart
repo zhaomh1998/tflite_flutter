@@ -113,8 +113,10 @@ class Interpreter {
   }
 
   /// Get byte buffer
-  static Future<Uint8List> _getBuffer(String assetFileName) async {
-    ByteData rawAssetFile = await rootBundle.load('$assetFileName');
+  static Future<Uint8List> _getBuffer(String assetFileName,
+      {bool fromAsset = true}) async {
+    ByteData rawAssetFile =
+        await rootBundle.load('${fromAsset ? "assets/" : ""}$assetFileName');
     final rawBytes = rawAssetFile.buffer.asUint8List();
     return rawBytes;
   }
