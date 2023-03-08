@@ -26,6 +26,6 @@ TensorFlow Lite plugin for Flutter apps.
   s.library = 'c++'
   # Fail early during build instead of not finding the library during runtime
   s.xcconfig = { 'OTHER_LDFLAGS' => '-framework TensorFlowLiteC -all_load' }
-  s.dependency 'TensorFlowLiteC', '~> 2.7.0'
+  s.dependency 'TensorFlowLiteC', '~> 2.9.0'
 
 end
