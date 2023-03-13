@@ -206,3 +206,9 @@ Refer [Tests](https://github.com/am15h/tflite_flutter_plugin/blob/master/example
 
 * Tian LIN, Jared Duke, Andrew Selle, YoungSeok Yoon, Shuangfeng Li from the TensorFlow Lite Team for their invaluable guidance.
 * Authors of [dart-lang/tflite_native](https://github.com/dart-lang/tflite_native).
+
+## For select_ops
+Follow [https://www.tensorflow.org/lite/guide/ops_select#ios](https://www.tensorflow.org/lite/guide/ops_select#ios) to add the following linker flag to xcodeworkspace -> Runner -> build settings -> Other Linker Flags
+```
+-force_load $(SRCROOT)/Pods/TensorFlowLiteSelectTfOps/Frameworks/TensorFlowLiteSelectTfOps.framework/TensorFlowLiteSelectTfOps
+```
